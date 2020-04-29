@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>磊迹</title>
+  
+  <subtitle>热爱可抵岁月漫长</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-04-21T02:59:00.274Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Lei Zhou</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/hello-world/"/>
+    <id>http://yoursite.com/hello-world/</id>
+    <published>2020-04-29T07:26:18.897Z</published>
+    <updated>2020-04-21T02:59:00.274Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>test2</title>
+    <link href="http://yoursite.com/test2/"/>
+    <id>http://yoursite.com/test2/</id>
+    <published>2020-04-28T11:35:43.000Z</published>
+    <updated>2020-04-28T11:35:43.793Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://yoursite.com/test/"/>
+    <id>http://yoursite.com/test/</id>
+    <published>2020-04-28T01:56:46.000Z</published>
+    <updated>2020-04-28T15:57:43.548Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="第一张-绪论"><a href="#第一张-绪论" class="headerlink" title="第一张 绪论"></a>第一张 绪论</h1><p>  首先介绍本文的设计背景</p><h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><p>  简要说明<br>  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><p>  对于本文的设计需求</p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>范德萨发</p>]]></content>
+    
+    <summary type="html">
+    
+      这是显示在首页的概述，正文内容均会被隐藏。https://blog.csdn.net/yueyue200830/article/details/104470646?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-5&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-5
+    
+    </summary>
+    
+    
+      <category term="Diary" scheme="http://yoursite.com/categories/Diary/"/>
+    
+      <category term="PlayStation" scheme="http://yoursite.com/categories/Diary/PlayStation/"/>
+    
+      <category term="Games" scheme="http://yoursite.com/categories/Diary/Games/"/>
+    
+      <category term="Life" scheme="http://yoursite.com/categories/Life/"/>
+    
+    
+      <category term="PS3" scheme="http://yoursite.com/tags/PS3/"/>
+    
+      <category term="Games" scheme="http://yoursite.com/tags/Games/"/>
+    
+  </entry>
+  
+</feed>

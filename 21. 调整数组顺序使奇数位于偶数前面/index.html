@@ -93,7 +93,7 @@
 <meta property="og:description" content="剑指offer刷题">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/d03a2efa-ef19-4c96-97e8-ff61df8061d3.png">
 <meta property="article:published_time" content="2020-02-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-30T02:26:48.079Z">
+<meta property="article:modified_time" content="2020-04-30T05:21:36.356Z">
 <meta property="article:author" content="Lei Zhou">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="剑指offer">
@@ -410,7 +410,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  264
+                  474
                 </span>
               
 
@@ -426,7 +426,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -455,16 +455,16 @@
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>需要保证奇数和奇数，偶数和偶数之间的相对位置不变，这和书本不太一样。</p>
 <div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/d03a2efa-ef19-4c96-97e8-ff61df8061d3.png" width="200px"> </div><br>
 
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>方法一：创建一个新数组，时间复杂度 O(N)，空间复杂度 O(N)。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reOrderArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 奇数个数</span></span><br><span class="line">    <span class="keyword">int</span> oddCnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> x : nums)</span><br><span class="line">        <span class="keyword">if</span> (!isEven(x))</span><br><span class="line">            oddCnt++;</span><br><span class="line">    <span class="keyword">int</span>[] copy = nums.clone();</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = oddCnt;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : copy) &#123;</span><br><span class="line">        <span class="keyword">if</span> (num % <span class="number">2</span> == <span class="number">1</span>)</span><br><span class="line">            nums[i++] = num;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            nums[j++] = num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isEven</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">2</span> == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>方法二：使用冒泡思想，每次都当前偶数上浮到当前最右边。时间复杂度 O(N<sup>2</sup>)，空间复杂度 O(1)，时间换空间。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reOrderArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = nums.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = N - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isEven(nums[j]) &amp;&amp; !isEven(nums[j + <span class="number">1</span>])) &#123;</span><br><span class="line">                swap(nums, j, j + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isEven</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">2</span> == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = nums[i];</span><br><span class="line">    nums[i] = nums[j];</span><br><span class="line">    nums[j] = t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>分析：</strong></p>
+<p>(双指针扫描) O(n)O(n)</p>
+<p>用两个指针分别从首尾开始，往中间扫描。扫描时保证第一个指针前面的数都是奇数，第二个指针后面的数都是偶数。</p>
+<p>每次迭代时需要进行的操作：</p>
+<p>第一个指针一直往后走，直到遇到第一个偶数为止；</p>
+<p>第二个指针一直往前走，直到遇到第一个奇数为止；</p>
+<p>交换两个指针指向的位置上的数，再进入下一层迭代，直到两个指针相遇为止；</p>
+<p>时间复杂度</p>
+<p>当两个指针相遇时，走过的总路程长度是 n，所以时间复杂度是 O(n)。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reOrderArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;<span class="built_in">array</span>)</span> </span>&#123;</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">int</span> len = <span class="built_in">array</span>.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">         <span class="keyword">if</span>(len &lt;= <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">         <span class="comment">//两个指针 分别头和尾  遇到不同的即交换</span></span><br><span class="line">         <span class="keyword">int</span> l = <span class="number">0</span>, r = len; </span><br><span class="line">         <span class="keyword">while</span>(l &lt; r)</span><br><span class="line">         &#123;</span><br><span class="line">             <span class="comment">//cout &lt;&lt; array[l] % 2 &lt;&lt; array[r] % 2&lt;&lt; endl;</span></span><br><span class="line">             <span class="comment">//判断条件</span></span><br><span class="line">             <span class="comment">//1 左边为偶数同时右边为奇数 交换 首尾指针前移</span></span><br><span class="line">             <span class="comment">//2 左边为偶 右边不为奇数  r--</span></span><br><span class="line">             <span class="comment">//3 左边为奇数 右边为奇数 l ++</span></span><br><span class="line">             <span class="comment">//4 其余情况 指针靠近</span></span><br><span class="line">             <span class="keyword">if</span>(<span class="built_in">array</span>[l] % <span class="number">2</span> == <span class="number">0</span> &amp;&amp; <span class="built_in">array</span>[r] % <span class="number">2</span> ==<span class="number">1</span>)</span><br><span class="line">             &#123;</span><br><span class="line">                 swap(<span class="built_in">array</span>[l],<span class="built_in">array</span>[r]);</span><br><span class="line">                 l ++;</span><br><span class="line">                 r --;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">array</span>[l] % <span class="number">2</span> == <span class="number">0</span>) r --; </span><br><span class="line">             <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">array</span>[r] % <span class="number">2</span> == <span class="number">1</span>) l ++;</span><br><span class="line">             <span class="keyword">else</span> </span><br><span class="line">             &#123;</span><br><span class="line">                 l ++;</span><br><span class="line">                 r --;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//优化</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reOrderArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;<span class="built_in">array</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="built_in">array</span>.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">            <span class="keyword">while</span>(i&lt;j &amp;&amp; <span class="built_in">array</span>[i]%<span class="number">2</span>==<span class="number">1</span>) i++;  <span class="comment">//直到找到第一个奇数</span></span><br><span class="line">            <span class="keyword">while</span>(i&lt;j &amp;&amp; <span class="built_in">array</span>[j]%<span class="number">2</span>==<span class="number">0</span>) j--;  <span class="comment">//直到找到第一个偶数</span></span><br><span class="line">            <span class="keyword">if</span>(i&lt;j) swap(<span class="built_in">array</span>[i],<span class="built_in">array</span>[j]);  <span class="comment">//交换</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -538,8 +538,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/22.%20%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%AC%20K%20%E4%B8%AA%E7%BB%93%E7%82%B9/" rel="next" title="剑指offer——22. 链表中倒数第 K 个结点">
-                <i class="fa fa-chevron-left"></i> 剑指offer——22. 链表中倒数第 K 个结点
+              <a href="/19.%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/" rel="next" title="剑指offer——19. 正则表达式匹配">
+                <i class="fa fa-chevron-left"></i> 剑指offer——19. 正则表达式匹配
               </a>
             
           </div>
@@ -786,7 +786,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共107.8k字</span>
+  <span class="post-count">博客全站共119k字</span>
 </div>
 
         

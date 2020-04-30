@@ -93,7 +93,7 @@
 <meta property="og:description" content="剑指offer刷题">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/17e301df-52e8-4886-b593-841a16d13e44.png">
 <meta property="article:published_time" content="2020-02-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-30T02:26:34.204Z">
+<meta property="article:modified_time" content="2020-04-30T05:11:36.496Z">
 <meta property="article:author" content="Lei Zhou">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="剑指offer">
@@ -410,7 +410,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  72
+                  490
                 </span>
               
 
@@ -426,7 +426,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -454,7 +454,7 @@
         <h1 id="18-2-删除链表中重复的结点"><a href="#18-2-删除链表中重复的结点" class="headerlink" title="18.2 删除链表中重复的结点"></a>18.2 删除链表中重复的结点</h1><p><a href="https://www.nowcoder.com/practice/fc533c45b73a41b0b44ccba763f866ef?tpId=13&tqId=11209&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking&from=cyc_github" target="_blank" rel="noopener">NowCoder</a></p>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/17e301df-52e8-4886-b593-841a16d13e44.png" width="450"/> </div><br>
 
-<h2 id="解题描述"><a href="#解题描述" class="headerlink" title="解题描述"></a>解题描述</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplication</span><span class="params">(ListNode pHead)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (pHead == <span class="keyword">null</span> || pHead.next == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> pHead;</span><br><span class="line">    ListNode next = pHead.next;</span><br><span class="line">    <span class="keyword">if</span> (pHead.val == next.val) &#123;</span><br><span class="line">        <span class="keyword">while</span> (next != <span class="keyword">null</span> &amp;&amp; pHead.val == next.val)</span><br><span class="line">            next = next.next;</span><br><span class="line">        <span class="keyword">return</span> deleteDuplication(next);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        pHead.next = deleteDuplication(pHead.next);</span><br><span class="line">        <span class="keyword">return</span> pHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="解题描述"><a href="#解题描述" class="headerlink" title="解题描述"></a>解题描述</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//思路用一个map 存值和链表地址  实现每次加入时只取重复元素的一个</span></span><br><span class="line"><span class="comment">//set记录当前重复的值，当判断存在相同点，即删除</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">set 的insert 和 emplace</span></span><br><span class="line"><span class="comment">必须明确一个概念就是，容器中插入的元素永远都不是元素本身，而是元素的一份copy。emplace其实就是调用了拷贝构造函数，在容器创建元素时，就直接根据需要插入的元素进行了构造。而insert,push_back等，先是构造了元素，在调用了重载运算符函数，对函数进行了赋值。所以比较耗时。故推荐使用emplace组的函数进行插入。</span></span><br><span class="line"><span class="comment">emplace族的三个函数：emplace_front(),emplace_back(),emplace()</span></span><br><span class="line"><span class="comment">--------------------- </span></span><br><span class="line"><span class="comment">作者：不然秋月春风夜 </span></span><br><span class="line"><span class="comment">来源：CSDN </span></span><br><span class="line"><span class="comment">原文：https://blog.csdn.net/m0_38126105/article/details/85042807 </span></span><br><span class="line"><span class="comment">版权声明：本文为博主原创文章，转载请附上博文链接！</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">set&lt;int&gt; s;</span></span><br><span class="line"><span class="comment">	pair&lt;set&lt;int&gt;::iterator,bool&gt; ret = s.insert(10);</span></span><br><span class="line"><span class="comment">	if (ret.second)&#123;</span></span><br><span class="line"><span class="comment">		cout &lt;&lt; "插入成功:" &lt;&lt; *ret.first &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">	else&#123;</span></span><br><span class="line"><span class="comment">		cout &lt;&lt; "插入失败:" &lt;&lt; *ret.first &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ListNode* deleteDuplication(ListNode* head) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!head ) <span class="keyword">return</span> nullptr;</span><br><span class="line">        <span class="comment">//map 键：val  值：指针  </span></span><br><span class="line">        map&lt;<span class="keyword">int</span>, ListNode*&gt; tmp;</span><br><span class="line">        set&lt;ListNode*&gt; dealNodes;</span><br><span class="line">        ListNode* pNode = head;</span><br><span class="line">        <span class="keyword">while</span>(pNode)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> val = pNode-&gt;val;</span><br><span class="line">            <span class="keyword">if</span>(!tmp.emplace(val, pNode).second)</span><br><span class="line">            &#123;</span><br><span class="line">                deleteNode(pNode);</span><br><span class="line">                dealNodes.emplace(tmp[val]);</span><br><span class="line">                <span class="comment">//deleteNode(tmp[val]);</span></span><br><span class="line">                <span class="comment">//tmp.erase(val);</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>  pNode = pNode-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(auto it = dealNodes.begin(); it != dealNodes.end(); it ++)</span><br><span class="line">            cout &lt;&lt; (*it)-&gt;val ;</span><br><span class="line">            <span class="comment">//deleteNode(*it);</span></span><br><span class="line">         cout &lt;&lt;endl;</span><br><span class="line">       <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//删除当前节点  参考上一个提</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode* node)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        auto p = node-&gt;next;</span><br><span class="line">        node-&gt;val = p-&gt;val;</span><br><span class="line">        node-&gt;next = p-&gt;next;</span><br><span class="line">        <span class="comment">// 这两步的作用就是将 *(node-&gt;next) 赋值给 *node，所以可以合并成一条语句：</span></span><br><span class="line">        <span class="comment">// *node = *(node-&gt;next);</span></span><br><span class="line">        delete p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -534,8 +534,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/19.%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/" rel="next" title="剑指offer——19. 正则表达式匹配">
-                <i class="fa fa-chevron-left"></i> 剑指offer——19. 正则表达式匹配
+              <a href="/20.%20%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="next" title="剑指offer——20. 表示数值的字符串">
+                <i class="fa fa-chevron-left"></i> 剑指offer——20. 表示数值的字符串
               </a>
             
           </div>
@@ -544,8 +544,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/18.1%20%E5%9C%A8%20O(1)%20%E6%97%B6%E9%97%B4%E5%86%85%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9/" rel="prev" title="剑指offer——18.1 在 O(1) 时间内删除链表节点">
-                剑指offer——18.1 在 O(1) 时间内删除链表节点 <i class="fa fa-chevron-right"></i>
+              <a href="/17.%20%E6%89%93%E5%8D%B0%E4%BB%8E%201%20%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84%20n%20%E4%BD%8D%E6%95%B0/" rel="prev" title="剑指offer——17. 打印从 1 到最大的 n 位数">
+                剑指offer——17. 打印从 1 到最大的 n 位数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -782,7 +782,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共107.8k字</span>
+  <span class="post-count">博客全站共119k字</span>
 </div>
 
         

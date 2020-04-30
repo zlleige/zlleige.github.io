@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="磊迹">
 <meta property="og:description" content="剑指offer刷题">
 <meta property="article:published_time" content="2020-02-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-30T02:27:31.816Z">
+<meta property="article:modified_time" content="2020-04-30T05:26:46.834Z">
 <meta property="article:author" content="Lei Zhou">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="剑指offer">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  113
+                  220
                 </span>
               
 
@@ -451,7 +451,7 @@
       
         <h1 id="30-包含-min-函数的栈"><a href="#30-包含-min-函数的栈" class="headerlink" title="30. 包含 min 函数的栈"></a>30. 包含 min 函数的栈</h1><p><a href="https://www.nowcoder.com/practice/4c776177d2c04c2494f2555c9fcc1e49?tpId=13&tqId=11173&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking&from=cyc_github" target="_blank" rel="noopener">NowCoder</a></p>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>定义栈的数据结构，请在该类型中实现一个能够得到栈最小元素的 min 函数。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Stack&lt;Integer&gt; dataStack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"><span class="keyword">private</span> Stack&lt;Integer&gt; minStack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    dataStack.push(node);</span><br><span class="line">    minStack.push(minStack.isEmpty() ? node : Math.min(minStack.peek(), node));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    dataStack.pop();</span><br><span class="line">    minStack.pop();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> dataStack.peek();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">min</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> minStack.peek();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">思路：</span></span><br><span class="line"><span class="comment">用一个辅助栈，每次压栈的时候，存入栈顶和压入数据的最小值，弹出时也弹出</span></span><br><span class="line"><span class="comment">这样就可以记录每一次压栈的时最小值状态</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    MinStack() &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//数据栈压入数据</span></span><br><span class="line">        _data.push(x);</span><br><span class="line">        <span class="comment">//辅助栈压入最小数据</span></span><br><span class="line">        <span class="keyword">if</span>(_minData.empty()) _minData.push(x);</span><br><span class="line">        <span class="keyword">else</span> _minData.push(min(_minData.top(), x));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(_data.empty()) <span class="keyword">return</span>;</span><br><span class="line">        _data.pop();</span><br><span class="line">        _minData.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _data.top();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _minData.top();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> _min = INT_MIN;</span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; _data;</span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt; _minData;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MinStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MinStack obj = new MinStack();</span></span><br><span class="line"><span class="comment"> * obj.push(x);</span></span><br><span class="line"><span class="comment"> * obj.pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.top();</span></span><br><span class="line"><span class="comment"> * int param_4 = obj.getMin();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -529,8 +529,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/31.%20%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97/" rel="next" title="剑指offer——31. 栈的压入、弹出序列">
-                <i class="fa fa-chevron-left"></i> 剑指offer——31. 栈的压入、弹出序列
+              <a href="/28.%20%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="next" title="剑指offer——28. 对称的二叉树">
+                <i class="fa fa-chevron-left"></i> 剑指offer——28. 对称的二叉树
               </a>
             
           </div>
@@ -539,8 +539,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/3.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/" rel="prev" title="剑指offer——3. 数组中重复的数字">
-                剑指offer——3. 数组中重复的数字 <i class="fa fa-chevron-right"></i>
+              <a href="/29.%20%E9%A1%BA%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5/" rel="prev" title="剑指offer——29. 顺时针打印矩阵">
+                剑指offer——29. 顺时针打印矩阵 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -777,7 +777,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共107.8k字</span>
+  <span class="post-count">博客全站共119k字</span>
 </div>
 
         

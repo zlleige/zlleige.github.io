@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="磊迹">
 <meta property="og:description" content="剑指offer刷题">
 <meta property="article:published_time" content="2020-02-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-30T02:27:35.860Z">
+<meta property="article:modified_time" content="2020-04-30T05:26:59.569Z">
 <meta property="article:author" content="Lei Zhou">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="剑指offer">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  205
+                  392
                 </span>
               
 
@@ -453,7 +453,7 @@
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。假设压入栈的所有数字均不相等。</p>
 <p>例如序列 1,2,3,4,5 是某栈的压入顺序，序列 4,5,3,2,1 是该压栈序列对应的一个弹出序列，但 4,3,5,1,2 就不可能是该压栈序列的弹出序列。</p>
 <h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>使用一个栈来模拟压入弹出操作。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">IsPopOrder</span><span class="params">(<span class="keyword">int</span>[] pushSequence, <span class="keyword">int</span>[] popSequence)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = pushSequence.length;</span><br><span class="line">    Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> pushIndex = <span class="number">0</span>, popIndex = <span class="number">0</span>; pushIndex &lt; n; pushIndex++) &#123;</span><br><span class="line">        stack.push(pushSequence[pushIndex]);</span><br><span class="line">        <span class="keyword">while</span> (popIndex &lt; n &amp;&amp; !stack.isEmpty() </span><br><span class="line">                &amp;&amp; stack.peek() == popSequence[popIndex]) &#123;</span><br><span class="line">            stack.pop();</span><br><span class="line">            popIndex++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">思路：</span></span><br><span class="line"><span class="comment">开一个辅助栈：</span></span><br><span class="line"><span class="comment">0、边界</span></span><br><span class="line"><span class="comment">若两个序列长度不等则视为并不是一个栈的压入、弹出序列。若两个序列都为空，则视为是一个栈的压入、弹出序列。</span></span><br><span class="line"><span class="comment">if(pushV.size() != popV.size() ) return false;</span></span><br><span class="line"><span class="comment">if( push.empty() &amp;&amp; push.empty()) return true;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1、输入序列 [1,2,3,4,5] 输出序列[4,5,3,2,1]</span></span><br><span class="line"><span class="comment">依次遍历输出序列 x（4），当栈顶元素不为x时，将输入序列压栈直到找到x,并且将x弹出</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">//结束条件</span></span><br><span class="line"><span class="comment">当输出序列为空 -return true;</span></span><br><span class="line"><span class="comment">当输入序列为空-并且栈顶数据不匹配输出序列 false</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">bool <span class="title">isPopOrder</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; pushV,vector&lt;<span class="keyword">int</span>&gt; popV)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pushV.size() != popV.size() ) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>( pushV.empty() &amp;&amp; popV.empty()) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        stack&lt;<span class="keyword">int</span>&gt; sta;</span><br><span class="line">        </span><br><span class="line">        auto itPush = pushV.begin();</span><br><span class="line">        auto itPop = popV.begin();</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">while</span>(itPush != pushV.end())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//加入数据</span></span><br><span class="line">           sta.push(*itPush);</span><br><span class="line">           itPush ++;</span><br><span class="line">           <span class="comment">//弹出数据</span></span><br><span class="line">           <span class="keyword">while</span>(!sta.empty() &amp;&amp; sta.top() == *itPop)</span><br><span class="line">           &#123;</span><br><span class="line">               sta.pop();</span><br><span class="line">               itPop ++;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sta.empty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -531,8 +531,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/32.1%20%E4%BB%8E%E4%B8%8A%E5%BE%80%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="next" title="剑指offer——32.1 从上往下打印二叉树">
-                <i class="fa fa-chevron-left"></i> 剑指offer——32.1 从上往下打印二叉树
+              <a href="/32.2%20%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%A0%91%E6%89%93%E5%8D%B0%E6%88%90%E5%A4%9A%E8%A1%8C/" rel="next" title="剑指offer——32.2 把二叉树打印成多行">
+                <i class="fa fa-chevron-left"></i> 剑指offer——32.2 把二叉树打印成多行
               </a>
             
           </div>
@@ -541,8 +541,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/30.%20%E5%8C%85%E5%90%AB%20min%20%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88/" rel="prev" title="剑指offer——30. 包含 min 函数的栈">
-                剑指offer——30. 包含 min 函数的栈 <i class="fa fa-chevron-right"></i>
+              <a href="/28.%20%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="prev" title="剑指offer——28. 对称的二叉树">
+                剑指offer——28. 对称的二叉树 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -779,7 +779,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共107.8k字</span>
+  <span class="post-count">博客全站共119k字</span>
 </div>
 
         

@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://latex.codecogs.com/gif.latex?x%5En=%5Cleft%5C%7B%5Cbegin%7Barray%7D%7Brcl%7D(x*x)%5E%7Bn/2%7D&&%7Bn%5C%252=0%7D%5C%5Cx*(x*x)%5E%7Bn/2%7D&&%7Bn%5C%252=1%7D%5Cend%7Barray%7D%5Cright.">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/48b1d459-8832-4e92-938a-728aae730739.jpg">
 <meta property="article:published_time" content="2020-02-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-30T02:26:20.960Z">
+<meta property="article:modified_time" content="2020-04-30T05:10:36.172Z">
 <meta property="article:author" content="Lei Zhou">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="剑指offer">
@@ -411,7 +411,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  149
+                  227
                 </span>
               
 
@@ -461,7 +461,7 @@
 
 
 <p>因为 (x*x)<sup>n/2</sup> 可以通过递归求解，并且每次递归 n 都减小一半，因此整个算法的时间复杂度为 O(logN)。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">Power</span><span class="params">(<span class="keyword">double</span> base, <span class="keyword">int</span> exponent)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (exponent == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (exponent == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> base;</span><br><span class="line">    <span class="keyword">boolean</span> isNegative = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (exponent &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        exponent = -exponent;</span><br><span class="line">        isNegative = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">double</span> pow = Power(base * base, exponent / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (exponent % <span class="number">2</span> != <span class="number">0</span>)</span><br><span class="line">        pow = pow * base;</span><br><span class="line">    <span class="keyword">return</span> isNegative ? <span class="number">1</span> / pow : pow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 1</span></span><br><span class="line"><span class="comment">//迭代</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">Power</span><span class="params">(<span class="keyword">double</span> base, <span class="keyword">int</span> exponent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(exponent == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">bool</span> isBig = exponent &gt; <span class="number">0</span>; <span class="comment">//标志当前的幂次正负</span></span><br><span class="line">        <span class="keyword">if</span>(!isBig) exponent = -exponent;</span><br><span class="line">        <span class="keyword">double</span> res = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(exponent --) res *= base;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> isBig ? res : <span class="number">1</span> / res; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">O(N)</span></span><br><span class="line"><span class="comment">pow(b,e)=</span></span><br><span class="line"><span class="comment">e=0 1;</span></span><br><span class="line"><span class="comment">e&gt;0 b*pow(b,e-1)</span></span><br><span class="line"><span class="comment">e&lt;0 1/(b*pow(b,e+1))</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">Power</span><span class="params">(<span class="keyword">double</span> base, <span class="keyword">int</span> exponent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(exponent == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(exponent &gt; <span class="number">0</span>) <span class="keyword">return</span> base * Power(base, --exponent );</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">        &#123;</span><br><span class="line">            exponent = -exponent;</span><br><span class="line">            <span class="comment">//cout &lt;&lt; exponent &lt;&lt; endl;</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">1.0</span> / (base * Power(base, --exponent ));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -539,8 +539,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/17.%20%E6%89%93%E5%8D%B0%E4%BB%8E%201%20%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84%20n%20%E4%BD%8D%E6%95%B0/" rel="next" title="剑指offer——17. 打印从 1 到最大的 n 位数">
-                <i class="fa fa-chevron-left"></i> 剑指offer——17. 打印从 1 到最大的 n 位数
+              <a href="/14.%20%E5%89%AA%E7%BB%B3%E5%AD%90/" rel="next" title="剑指offer——14. 剪绳子">
+                <i class="fa fa-chevron-left"></i> 剑指offer——14. 剪绳子
               </a>
             
           </div>
@@ -787,7 +787,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共107.8k字</span>
+  <span class="post-count">博客全站共119k字</span>
 </div>
 
         

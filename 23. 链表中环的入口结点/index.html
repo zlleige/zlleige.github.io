@@ -93,7 +93,7 @@
 <meta property="og:description" content="剑指offer刷题">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/bb7fc182-98c2-4860-8ea3-630e27a5f29f.png">
 <meta property="article:published_time" content="2020-02-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-30T02:26:56.692Z">
+<meta property="article:modified_time" content="2020-04-30T05:22:59.390Z">
 <meta property="article:author" content="Lei Zhou">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="剑指offer">
@@ -410,7 +410,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  443
+                  569
                 </span>
               
 
@@ -426,7 +426,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -451,7 +451,7 @@
       
 
       
-        <h1 id="23-链表中环的入口结点"><a href="#23-链表中环的入口结点" class="headerlink" title="23. 链表中环的入口结点"></a>23. 链表中环的入口结点</h1><p><a href="https://www.nowcoder.com/practice/253d2c59ec3e4bc68da16833f79a38e4?tpId=13&tqId=11208&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking&from=cyc_github" target="_blank" rel="noopener">NowCoder</a></p>
+        <h1 id="23-链表中环的入口结点"><a href="#23-链表中环的入口结点" class="headerlink" title="23. 链表中环的入口结点"></a>23. 链表中环的入口结点</h1><p><a href="https://www.acwing.com/solution/acwing/content/741/" target="_blank" rel="noopener">acwing</a></p>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>一个链表中包含环，请找出该链表的环的入口结点。要求不能使用额外的空间。</p>
 <h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>使用双指针，一个快指针 fast 每次移动两个节点，一个慢指针 slow 每次移动一个节点。因为存在环，所以两个指针必定相遇在环中的某个节点上。</p>
 <p>假设环入口节点为 y1，相遇所在节点为 z1。</p>
@@ -461,7 +461,7 @@
 <p>上面的等值没有很强的规律，但是我们可以发现 y+z 就是圆环的总长度，因此我们将上面的等式再分解：x=(N-2)(y+z)+z。这个等式左边是从起点x1 到环入口节点 y1 的长度，而右边是在圆环中走过 (N-2) 圈，再从相遇点 z1 再走过长度为 z 的长度。此时我们可以发现如果让两个指针同时从起点 x1 和相遇点 z1 开始，每次只走过一个距离，那么最后他们会在环入口节点相遇。</p>
 <div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/bb7fc182-98c2-4860-8ea3-630e27a5f29f.png" width="500"/> </div><br>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">EntryNodeOfLoop</span><span class="params">(ListNode pHead)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (pHead == <span class="keyword">null</span> || pHead.next == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    ListNode slow = pHead, fast = pHead;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125; <span class="keyword">while</span> (slow != fast);</span><br><span class="line">    fast = pHead;</span><br><span class="line">    <span class="keyword">while</span> (slow != fast) &#123;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        fast = fast.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> 思路：</span></span><br><span class="line"><span class="comment"> 1、定义快慢两个指针 ：ps pf  步进分别：1 2</span></span><br><span class="line"><span class="comment"> 2、找到相遇的点</span></span><br><span class="line"><span class="comment"> 3、慢指针从头，快指针从当前位置  同时 步进1 直到相遇</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> 4、空环</span></span><br><span class="line"><span class="comment"> [1]</span></span><br><span class="line"><span class="comment">  0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ListNode *entryNodeOfLoop(ListNode *head) &#123;</span><br><span class="line">       <span class="keyword">if</span>(!head || !head-&gt;next) <span class="keyword">return</span> nullptr;</span><br><span class="line">       ListNode* ps = head;</span><br><span class="line">       ListNode* pl = head;</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">while</span>(pl &amp;&amp; pl-&gt;next)</span><br><span class="line">       &#123;</span><br><span class="line">           ps = ps-&gt;next;</span><br><span class="line">           pl = pl-&gt;next-&gt;next;</span><br><span class="line">           <span class="keyword">if</span>(ps == pl) <span class="keyword">break</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//判断是否有环 !pl-&gt;next：防止单节点输入</span></span><br><span class="line">       <span class="keyword">if</span>(ps != pl || !pl-&gt;next) <span class="keyword">return</span> nullptr;</span><br><span class="line">       <span class="comment">//单环</span></span><br><span class="line">       <span class="keyword">if</span>(pl == pl-&gt;next) <span class="keyword">return</span> pl;</span><br><span class="line">       ps = head;</span><br><span class="line">       <span class="keyword">while</span>(ps != pl)</span><br><span class="line">       &#123;</span><br><span class="line">           ps = ps-&gt;next;</span><br><span class="line">           pl = pl-&gt;next;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> ps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -539,8 +539,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/24.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" rel="next" title="剑指offer——24. 反转链表">
-                <i class="fa fa-chevron-left"></i> 剑指offer——24. 反转链表
+              <a href="/25.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" rel="next" title="剑指offer——25. 合并两个排序的链表">
+                <i class="fa fa-chevron-left"></i> 剑指offer——25. 合并两个排序的链表
               </a>
             
           </div>
@@ -549,8 +549,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/22.%20%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%AC%20K%20%E4%B8%AA%E7%BB%93%E7%82%B9/" rel="prev" title="剑指offer——22. 链表中倒数第 K 个结点">
-                剑指offer——22. 链表中倒数第 K 个结点 <i class="fa fa-chevron-right"></i>
+              <a href="/26.%20%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" rel="prev" title="剑指offer——26. 树的子结构">
+                剑指offer——26. 树的子结构 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -787,7 +787,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共107.8k字</span>
+  <span class="post-count">博客全站共119k字</span>
 </div>
 
         

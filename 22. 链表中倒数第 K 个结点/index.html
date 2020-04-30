@@ -93,7 +93,7 @@
 <meta property="og:description" content="剑指offer刷题">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/6b504f1f-bf76-4aab-a146-a9c7a58c2029.png">
 <meta property="article:published_time" content="2020-02-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-30T02:26:52.606Z">
+<meta property="article:modified_time" content="2020-04-30T05:22:08.414Z">
 <meta property="article:author" content="Lei Zhou">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="剑指offer">
@@ -410,7 +410,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  151
+                  239
                 </span>
               
 
@@ -455,7 +455,7 @@
 <h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>设链表的长度为 N。设置两个指针 P1 和 P2，先让 P1 移动 K 个节点，则还有 N - K 个节点可以移动。此时让 P1 和 P2 同时移动，可以知道当 P1 移动到链表结尾时，P2 移动到第 N - K 个节点处，该位置就是倒数第 K 个节点。</p>
 <div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/6b504f1f-bf76-4aab-a146-a9c7a58c2029.png" width="500"/> </div><br>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">FindKthToTail</span><span class="params">(ListNode head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    ListNode P1 = head;</span><br><span class="line">    <span class="keyword">while</span> (P1 != <span class="keyword">null</span> &amp;&amp; k-- &gt; <span class="number">0</span>)</span><br><span class="line">        P1 = P1.next;</span><br><span class="line">    <span class="keyword">if</span> (k &gt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    ListNode P2 = head;</span><br><span class="line">    <span class="keyword">while</span> (P1 != <span class="keyword">null</span>) &#123;</span><br><span class="line">        P1 = P1.next;</span><br><span class="line">        P2 = P2.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> P2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">思路：</span></span><br><span class="line"><span class="comment">1、一轮遍历  得到链表的长度</span></span><br><span class="line"><span class="comment">2、二轮遍历 得到要找的元素</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ListNode* findKthToTail(ListNode* pListHead, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">        ListNode* pList = pListHead;</span><br><span class="line">        <span class="keyword">while</span>(pList) </span><br><span class="line">        &#123;</span><br><span class="line">           len ++;</span><br><span class="line">           pList = pList-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="comment">// cout &lt;&lt; len &lt;&lt;endl;</span></span><br><span class="line">        <span class="keyword">int</span> num = len - k; <span class="comment">//例如链表：1-&gt;2-&gt;3-&gt;4-&gt;5 ，k=2 len=5 实际num从0开始 移动len-k=3次 </span></span><br><span class="line">        <span class="keyword">if</span>(num &lt; <span class="number">0</span>) <span class="keyword">return</span> nullptr;</span><br><span class="line">        pList = pListHead;</span><br><span class="line">        <span class="keyword">while</span>(num &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            num--;</span><br><span class="line">            pList = pList-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> pList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -533,8 +533,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/23.%20%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E7%BB%93%E7%82%B9/" rel="next" title="剑指offer——23. 链表中环的入口结点">
-                <i class="fa fa-chevron-left"></i> 剑指offer——23. 链表中环的入口结点
+              <a href="/27.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" rel="next" title="剑指offer——27. 二叉树的镜像">
+                <i class="fa fa-chevron-left"></i> 剑指offer——27. 二叉树的镜像
               </a>
             
           </div>
@@ -543,8 +543,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/21.%20%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/" rel="prev" title="剑指offer——21. 调整数组顺序使奇数位于偶数前面串">
-                剑指offer——21. 调整数组顺序使奇数位于偶数前面串 <i class="fa fa-chevron-right"></i>
+              <a href="/24.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" rel="prev" title="剑指offer——24. 反转链表">
+                剑指offer——24. 反转链表 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -781,7 +781,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共107.8k字</span>
+  <span class="post-count">博客全站共119k字</span>
 </div>
 
         

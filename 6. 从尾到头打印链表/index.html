@@ -96,7 +96,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/0dae7e93-cfd1-4bd3-97e8-325b032b716f-1572687622947.gif">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/9d1deeba-4ae1-41dc-98f4-47d85b9831bc.gif">
 <meta property="article:published_time" content="2020-02-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-30T02:25:05.214Z">
+<meta property="article:modified_time" content="2020-04-30T04:56:08.667Z">
 <meta property="article:author" content="Lei Zhou">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="剑指offer">
@@ -413,7 +413,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  522
+                  554
                 </span>
               
 
@@ -459,7 +459,7 @@
 <div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/f5792051-d9b2-4ca4-a234-a4a2de3d5a57.png" width="300px"> </div><br>
 
 <h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="1-使用递归"><a href="#1-使用递归" class="headerlink" title="1. 使用递归"></a>1. 使用递归</h3><p>要逆序打印链表 1-&gt;2-&gt;3（3,2,1)，可以先逆序打印链表 2-&gt;3(3,2)，最后再打印第一个节点 1。而链表 2-&gt;3 可以看成一个新的链表，要逆序打印该链表可以继续使用求解函数，也就是在求解函数中调用自己，这就是递归函数。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printListFromTailToHead</span><span class="params">(ListNode listNode)</span> </span>&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; ret = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (listNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">        ret.addAll(printListFromTailToHead(listNode.next));</span><br><span class="line">        ret.add(listNode.val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; data;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">printListFromTailToHead</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(head != <span class="literal">NULL</span>)</span><br><span class="line">       &#123;</span><br><span class="line">           printListFromTailToHead(head-&gt;next);</span><br><span class="line">           data.emplace_back(head-&gt;val);</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-使用头插法"><a href="#2-使用头插法" class="headerlink" title="2. 使用头插法"></a>2. 使用头插法</h3><p>头插法顾名思义是将节点插入到头部：在遍历原始链表时，将当前节点插入新链表的头部，使其成为第一个节点。</p>
 <p>链表的操作需要维护后继关系，例如在某个节点 node1 之后插入一个节点 node2，我们可以通过修改后继关系来实现：</p>
@@ -472,12 +472,12 @@
 <p>为了能将一个节点插入头部，我们引入了一个叫头结点的辅助节点，该节点不存储值，只是为了方便进行插入操作。不要将头结点与第一个节点混起来，第一个节点是链表中第一个真正存储值的节点。</p>
 <div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/0dae7e93-cfd1-4bd3-97e8-325b032b716f-1572687622947.gif" width="420px"> </div><br>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printListFromTailToHead</span><span class="params">(ListNode listNode)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 头插法构建逆序链表</span></span><br><span class="line">    ListNode head = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">while</span> (listNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">        ListNode memo = listNode.next;</span><br><span class="line">        listNode.next = head.next;</span><br><span class="line">        head.next = listNode;</span><br><span class="line">        listNode = memo;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 构建 ArrayList</span></span><br><span class="line">    ArrayList&lt;Integer&gt; ret = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    head = head.next;</span><br><span class="line">    <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</span><br><span class="line">        ret.add(head.val);</span><br><span class="line">        head = head.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ListNode* reverseList(ListNode* head) &#123;</span><br><span class="line">        ListNode* pPre = nullptr;</span><br><span class="line">        ListNode* pCurr = head;</span><br><span class="line">        <span class="keyword">while</span>(pCurr)</span><br><span class="line">        &#123;</span><br><span class="line">            ListNode* pNext = pCurr-&gt;next; <span class="comment">//记录当前节点的下一个节点</span></span><br><span class="line">            pCurr-&gt;next = pPre; <span class="comment">//当前节点指向前一个节点</span></span><br><span class="line">            pPre = pCurr; <span class="comment">//前一个节点指向当前</span></span><br><span class="line">            pCurr = pNext;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">return</span> pPre; <span class="comment">//为什么 因为到左后一个节点的时候  pPre正好等于最后一个节点</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-使用栈"><a href="#3-使用栈" class="headerlink" title="3. 使用栈"></a>3. 使用栈</h3><p>栈具有后进先出的特点，在遍历链表时将值按顺序放入栈中，最后出栈的顺序即为逆序。</p>
 <div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/9d1deeba-4ae1-41dc-98f4-47d85b9831bc.gif" width="340px"> </div><br>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printListFromTailToHead</span><span class="params">(ListNode listNode)</span> </span>&#123;</span><br><span class="line">    Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="keyword">while</span> (listNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">        stack.add(listNode.val);</span><br><span class="line">        listNode = listNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">    ArrayList&lt;Integer&gt; ret = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">while</span> (!stack.isEmpty())</span><br><span class="line">        ret.add(stack.pop());</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ListNode* ReverseList(ListNode* pHead) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!pHead || !pHead-&gt;next) <span class="keyword">return</span> pHead;</span><br><span class="line">        ListNode* pList = pHead;</span><br><span class="line">        stack&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line">        <span class="keyword">while</span>(pList)</span><br><span class="line">        &#123;</span><br><span class="line">            tmp.push(pList-&gt;val);</span><br><span class="line">            pList = pList-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        pList = pHead;</span><br><span class="line">        <span class="keyword">while</span>(pList)</span><br><span class="line">        &#123;</span><br><span class="line">            pList-&gt;val = tmp.top();</span><br><span class="line">            pList = pList-&gt;next;</span><br><span class="line">            tmp.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -555,8 +555,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/60.%20n%20%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/" rel="next" title="剑指offer——60. n 个骰子的点数">
-                <i class="fa fa-chevron-left"></i> 剑指offer——60. n 个骰子的点数
+              <a href="/8.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E7%BB%93%E7%82%B9/" rel="next" title="剑指offer——8. 二叉树的下一个结点">
+                <i class="fa fa-chevron-left"></i> 剑指offer——8. 二叉树的下一个结点
               </a>
             
           </div>
@@ -565,8 +565,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/59.%20%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" rel="prev" title="剑指offer——59. 滑动窗口的最大值">
-                剑指offer——59. 滑动窗口的最大值 <i class="fa fa-chevron-right"></i>
+              <a href="/5.%20%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC/" rel="prev" title="剑指offer——5. 替换空格">
+                剑指offer——5. 替换空格 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -803,7 +803,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共107.8k字</span>
+  <span class="post-count">博客全站共119k字</span>
 </div>
 
         

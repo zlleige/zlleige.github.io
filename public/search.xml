@@ -109,9 +109,15 @@
       </tags>
   </entry>
   <entry>
-    <title>springCloud</title>
+    <title>springCloud学习笔记</title>
     <url>/springCloud/</url>
-    <content><![CDATA[<figure class="highlight subunit"><table><tr><td class="code"><pre><span class="line">title: springCloud学习笔记</span><br><span class="line">date: 2020<span class="string">-09</span><span class="string">-5</span>  </span><br><span class="line">categories:</span><br><span class="line">- [java, JavaEE, SpringCloud]</span><br><span class="line"><span class="keyword">tags:</span></span><br><span class="line">- java</span><br><span class="line">- JavaEE</span><br><span class="line">- SpringCloud</span><br><span class="line">description: 剑指offer刷题</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<!-- GFM-TOC -->
+
+
+
+<!-- GFM-TOC -->
+
+
 
 
 
@@ -120,6 +126,16 @@
 <p><a href="https://www.bilibili.com/video/BV1jJ411S7xr?from=search&seid=15960813603383529871" target="_blank" rel="noopener">B站kuagn</a></p>
 </blockquote>
 <h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2>]]></content>
+      <categories>
+        <category>java</category>
+        <category>JavaEE</category>
+        <category>SpringCloud</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>JavaEE</tag>
+        <tag>SpringCloud</tag>
+      </tags>
   </entry>
   <entry>
     <title>操作系统原理——Linux</title>

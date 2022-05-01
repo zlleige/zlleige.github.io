@@ -117,7 +117,7 @@ deploy:
     type: git
     repo: 
       githab: git@github.com:zlleige/zlleige.github.io.git,master
-      gitcafe: git@e.coding.net:zlleige/zlleige/zlleige.git,master
+        #  gitcafe: git@e.coding.net:zlleige/zlleige/zlleige.git,master
       gittee: git@gitee.com:zlleige/zlleige.git,master
     # branch: master
         
@@ -126,7 +126,7 @@ backup:
     type: git
     repository:
       githab: git@github.com:zlleige/zlleige.github.io.git,backup
-      gitcafe: git@e.coding.net:zlleige/zlleige/zlleige.git,backup
+        #  gitcafe: git@e.coding.net:zlleige/zlleige/zlleige.git,backup
       gittee: git@gitee.com:zlleige/zlleige.git,backup
 
 live2d:

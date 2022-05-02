@@ -112,5 +112,77 @@ public:
 
 
 
+### java实现
 
+
+
+#### 1 使用栈
+
+空间复杂度O(N), 时间复杂度O(N)
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int[] reversePrint(ListNode head) {
+        if(head == null) return new int[]{};
+        Stack<Integer> stack = new Stack();
+        ListNode curr = head;
+        while(curr != null) {
+            stack.push(curr.val);
+            curr = curr.next;
+        }
+        int[] res = new int[stack.size()];
+        int i = 0;
+        while(!stack.empty()) {
+            res[i++] = stack.pop();
+        }
+        return res;
+    }
+}
+```
+
+
+
+#### 2 直接使用数组返回
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int[] reversePrint(ListNode head) {
+        // 时间复杂度O(2N) 空间复制度O(N)
+        if(head == null) return new int[]{};
+        ListNode curr = head;
+        // 获取链表长度
+        int nodeLen  = 0;
+        while(curr != null) {
+          nodeLen ++;
+          curr = curr.next;
+        }
+
+        curr = head;
+        // 初始化返回数组，再遍历链表
+        int[] res = new int[nodeLen];
+        int i = nodeLen - 1;
+        while(curr != null) {
+          res[i --] = curr.val;
+           curr = curr.next;
+        }
+        return res;
+    }
+}
+```
 

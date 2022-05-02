@@ -125,5 +125,27 @@ public:
 
 
 
+#### java 实现
+
+
+
+```java
+class Solution {
+    public int fib(int n) {
+        if(n<=1) return n;
+
+        int a = 0;
+        int b = 1;
+        for(int i = 2; i <= n; i ++) {
+            int tmp = b;
+            b = a + b;
+            a = tmp;
+            if(b > 1000000007) b %= 1000000007;
+        }
+        return b;
+    }
+}
+```
+
 
 

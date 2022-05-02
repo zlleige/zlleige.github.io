@@ -109,5 +109,51 @@ TreeNode* dfs(vector<int>& postorder, int pl, int pr, map<int, int>& vHash, int 
 
 
 
+#### java 实现
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    // 前序遍历： 根 左 右,前序遍历的第一个点即使根
+    // 中序遍历： 左 根 右
+
+
+    public TreeNode buildTree(int[] pre, int[] in) {
+        if(pre.length==0 || in.length == 0) return null;
+        Map<Integer, Integer> inMap = new HashMap<>();
+        for(int i = 0; i < in.length; i ++) {
+            inMap.put(in[i], i);
+        }
+        return buildTree(pre, 0, pre.length-1, inMap, 0, in.length-1);
+    }
+
+    TreeNode buildTree(int[] pre, int pl, int pr, Map<Integer, Integer> inMap, int il, int ir) {
+        if(pl > pr || il > ir) {
+            return null;
+        } 
+        // preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+        // 前序遍历preorder的第一点即为根3
+        TreeNode node = new TreeNode(pre[pl]);
+        // 找到中序遍历中根的位置 pos = 1
+        int pos = inMap.get(pre[pl]);
+        // 构建左子树 preorder = [9], inorder = [9]
+        node.left = buildTree(pre, pl + 1, pl +  (pos - il), inMap, il , pos - 1);
+        // 构建右子树 preorder = [20,15,7], inorder = [15,20,7]
+        node.right = buildTree(pre,  pl +  (pos - il) +1, pr, inMap, pos +1, ir);
+        return node;
+    }
+
+
+}
+```
+
 
 

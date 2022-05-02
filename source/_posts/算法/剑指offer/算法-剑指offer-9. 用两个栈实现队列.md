@@ -85,5 +85,86 @@ private:
 
 
 
+### java 实现 leetcode
+
+
+
+简单明了，带你直接看懂题目和例子。 输入： ["CQueue","appendTail","deleteHead","deleteHead"] 这里是要执行的方法，从左到右执行
+
+[[],[3],[],[]]对应上面的方法，是上面方法的参数。CQueue和deleteHead方法不需要指定数字，只有添加才需要指定数字
+
+1.创建队列，返回值为null
+
+2.将3压入栈，返回值为null
+
+3.将栈底的元素删除，也就是消息队列中先进来的元素，所以是deleteHead，返回该元素的数值，所以为3
+
+4.继续删除栈底的元素，但是没有元素了，所以返回-1
+
+所以就有了下面的输出 输出：[null,null,3,-1]
+
+示例 2： 输入： ["CQueue","deleteHead","appendTail","appendTail","deleteHead","deleteHead"]
+
+[[],[],[5],[2],[],[]]
+
+1.创建队列，返回值为null
+
+2.删除栈底的元素，但是没有元素，所以返回-1
+
+3.把5压入栈，返回null
+
+4.把2压入栈，返回null
+
+5.删除栈底的一个元素，也就是消息队列中先进来的元素，所以是deleteHead，就是最先进来的5，返回值为5，
+
+6.删除栈底的一个元素，就是后进来的2，返回值为2，
+
+所以就有了下面的输出
+
+输出：[null,-1,null,null,5,2]
+
+有没有发现先进来的数字，首先显示出来了，但是题目中说要使用栈，栈是先进后出的，使用栈来实现先进先出，在这里使用两个栈就好了，从一个进来再到另一个栈，这样顺序就是先进先出了。题目的主旨写在第一句，就是，使用两个栈实现一个队列。
+
+
+
+```java
+class CQueue {
+    
+    // s1接受数据，s2输出数据，当s2为空时，添加s1数据
+    private Stack<Integer> s1,s2;
+    
+    public CQueue() {
+        s1 = new Stack();
+        s2 = new Stack();
+    }
+    
+    public void appendTail(int value) {
+        s1.push(value);
+    }
+    
+    public int deleteHead() {
+       if(!s2.empty()) {
+           return s2.pop();
+       } else {
+           // 装s1数据
+           while(!s1.empty()) {
+               s2.push(s1.pop());
+           }
+           return s2.empty()?-1:s2.pop();
+       }
+    }
+
+}
+
+/**
+ * Your CQueue object will be instantiated and called as such:
+ * CQueue obj = new CQueue();
+ * obj.appendTail(value);
+ * int param_2 = obj.deleteHead();
+ */
+```
+
+
+
 
 

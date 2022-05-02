@@ -68,5 +68,36 @@ public:
 
 
 
+java实现:
+
+时间复杂度O(N),空间复杂度 O(N)
+
+```java
+class Solution {
+    public String replaceSpace(String s) {
+        // 获取当前的空格数
+        int sLen = s.length();
+        int spaceCount = 0;
+        for(int i=0;i<sLen;i++) {
+            if(s.charAt(i) == ' ') spaceCount ++;
+        }
+        // 初始化一个字符数组空间
+        int newLen = sLen + 2*spaceCount;
+        char[] newStr = new char[newLen];
+        //从后往前复制数据
+        for(int i = newLen-1, j = sLen-1; i>=0 && j >=0; j --){
+            if(s.charAt(j) != ' ') {
+                newStr[i--] = s.charAt(j);
+            } else {
+                newStr[i--] = '0';
+                newStr[i--] = '2';
+                newStr[i--] = '%';
+            }
+        }
+        return new String(newStr, 0, newLen);
+    }
+}
+```
+
 
 

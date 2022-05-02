@@ -102,3 +102,66 @@ public:
 
 
 
+#### java 版本
+
+
+
+```java
+/*
+public class TreeLinkNode {
+    int val;
+    TreeLinkNode left = null;
+    TreeLinkNode right = null;
+    TreeLinkNode next = null;
+
+    TreeLinkNode(int val) {
+        this.val = val;
+    }
+}
+*/
+
+/* 二叉树的后继
+          8
+     6         10
+   5  7      9     11
+    12 13
+    中序遍历： 左 根 右 [5 6 7 8   9 10 11]
+    根据当前节点是否含有右子树讨论：
+    （1）有右子树: 及后继节点即为右子树的最左边节点
+        如6，8,右子树最左边的节点
+    （2）无右子树，
+        当前节点为其根节点的right：如11，13：
+           返回第一个满足 当前节点的father(a:6) 是其father（b:8）的左节点的节点（b）
+        当前节点为其根节点的left：如5，9：返回当前节点的根
+    
+
+*/ 
+public class Solution {
+    public TreeLinkNode GetNext(TreeLinkNode pNode) {
+        if(pNode == null) {
+            return null;
+        }
+        
+        // 当前节点存在右子树,返回右子树最左侧的节点
+        if(pNode.right != null) {
+            TreeLinkNode p = pNode.right;
+            while(p.left != null) {
+                p = p.left;
+            }
+            return p;
+        } else {
+            // 当前节点为father的右节点, 找到第一次出现father是father的father的left的情况
+            while(pNode.next != null && pNode.next.right == pNode) {
+                pNode = pNode.next;
+            }
+            // 结合了当前节点是father左右节点的情况，返回父节点
+            return pNode.next;
+        }
+    }
+}
+```
+
+
+
+
+

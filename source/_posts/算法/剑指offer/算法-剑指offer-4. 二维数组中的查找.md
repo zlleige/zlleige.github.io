@@ -60,5 +60,34 @@ public:
 
 
 
+### JAVA 实现
+
+时间复杂度O(N),空间复杂度O(1)
+
+从右上角的数据开始比较：
+
+```java
+class Solution {
+    public boolean findNumberIn2DArray(int[][] matrix, int target) {
+        if(matrix ==null || matrix.length == 0 || matrix[0].length == 0) {
+            return false;
+        }
+        int row = matrix.length;
+        int col = matrix[0].length;
+
+        for(int j = col - 1, i = 0; j >= 0 && i < row; ) {
+            if(matrix[i][j] == target) {
+                return true;
+            } else if(matrix[i][j] < target) {
+                i ++;
+            } else {
+                j --;
+            }
+        }
+        return false;
+    }
+}
+```
+
 
 

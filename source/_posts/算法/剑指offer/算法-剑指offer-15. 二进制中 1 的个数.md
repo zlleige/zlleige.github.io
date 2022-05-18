@@ -6,6 +6,7 @@ categories:
 tags:
 - 算法
 - 剑指offer
+- 位运算
 description: 剑指offer刷题
 ---
 
@@ -64,5 +65,54 @@ public:
 
 
 
+#### 方法一：循环检查二进制位
 
+**思路及解法**
+
+我们可以直接循环检查给定整数 *n* 的二进制位的每一位是否为 1。
+
+具体代码中，当检查第 *i* 位时，我们可以让 *n* 与 2*i* 进行与运算，当且仅当 *n* 的第 *i* 位为 1 时，运算结果不为 0。
+
+```java
+public class Solution {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        int res = 0;
+        for(int i =0; i < 32; i ++){
+            if((n & (1 << i)) != 0) {
+                res ++;
+            }
+        }
+        return res;
+    }
+}
+```
+
+
+
+#### 方法二：位运算优化
+
+**思路及解法**
+
+观察这个运算：*n* & (*n*−1)，其预算结果恰为把 *n* 的二进制位中的最低位的 1 变为 0 之后的结果。
+
+如：6 & (6−1)=4,6=(110)2,4=(100)2，运算结果 4 即为把 6 的二进制位中的最低位的 1 变为 0 之后的结果。
+
+这样我们可以利用这个位运算的性质加速我们的检查过程，在实际代码中，我们不断让当前的 *n* 与 *n*−1 做与运算，直到 *n* 变为 0 即可。因为每次运算会使得 *n* 的最低位的 1 被翻转，因此运算次数就等于 *n* 的二进制位中 1 的个数。
+
+
+
+```jav
+public class Solution {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        int res = 0;
+        while(n != 0) {
+            n &= n -1;
+            res ++;
+        }
+        return res;
+    }
+}
+```
 

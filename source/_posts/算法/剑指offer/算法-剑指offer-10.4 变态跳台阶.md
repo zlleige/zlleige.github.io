@@ -67,6 +67,14 @@ f(n) = 2*f(n-1)
 
 所以 f(n) 是一个等比数列
 
+f(n) = 2^(n-1)  n>=1   =>求和   sn=  2^(n-1)
+
+
+
+![image-20220502203248845](算法-剑指offer-10.4 变态跳台阶/image-20220502203248845.png)
+
+
+
 ```source-java
 public int JumpFloorII(int target) {
     return (int) Math.pow(2, target - 1);

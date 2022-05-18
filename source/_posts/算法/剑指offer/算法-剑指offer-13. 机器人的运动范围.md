@@ -125,3 +125,58 @@ public:
 
 
 
+### java 实现
+
+DFS：
+
+
+
+```java
+class Solution {
+    public int movingCount(int m, int n, int k) {
+        // dfs
+        if(m < 0 || n < 0 || k <0)  {
+            return 0;
+        }
+        boolean vis[][] = new boolean[m][n];
+        return dfs(m, n, 0, 0, k,vis);
+    }
+    
+    private int dfs(int m, int n, int x, int y, int k, boolean[][] vis) {
+        // 边界条件
+        if(x <0 || x >= m || y<0 || y >=n || vis[x][y] || !isVisit(x, y, k) ) {
+            return 0;
+        }
+        // 当前位置记录可达
+        vis[x][y] = true;
+        // 遍历四个方向，可达数据之和返回
+        int dx[] = {-1, 0, 1, 0}; 
+        int dy[] = {0, -1, 0, 1};
+        int res = 1;
+        for (int i = 0; i < 4; i ++) {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+            res += dfs(m, n, nx, ny,k,vis);
+        }
+        // return 1 + dfs(m, n, x +1, y,k,vis) +dfs(m, n, x -1, y,k,vis) +dfs(m, n, x, y+1,k,vis) +dfs(m, n, x, y-1,k,vis);
+
+        return res;
+    }
+
+    private int getSum (int x) {
+        int sum = 0;
+        while(x > 0) {
+            sum += x % 10;
+            x /= 10;
+        }
+        return sum;
+    }
+
+    private boolean isVisit(int x, int y, int k) {
+        return getSum(x) +getSum(y) <= k;
+    }
+
+
+}
+```
+

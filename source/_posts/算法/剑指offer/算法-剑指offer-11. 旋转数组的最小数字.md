@@ -70,3 +70,43 @@ public:
 };
 ```
 
+
+
+
+
+### java 实现
+
+
+
+[leetcode题解]([旋转数组的最小数字 - 旋转数组的最小数字 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/solution/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-by-leetcode-s/))
+
+
+
+```java
+class Solution {
+    public int minArray(int[] num) {
+        // 旋转后，存在最小值x，使得左侧数据>=x，右侧数据<=x.满足二分性质
+        int low = 0, high = num.length -1;
+
+        // 第三种情况：可能存在[22222 012222]此时mid会有和high相同的情况，但是无法判断是在左右区间，所以可以提前处理相同的数据
+        while(high > 0 && num[high] == num[low]) {
+            high --;
+        }
+        if(num[high] >= num[low]) return num[low];
+
+        while(low < high) {
+            int mid = low + (high -low)/2;
+            if (num[mid] <= num[high]) {
+                // 第一种情况：mid小于high,最小值在左边，但此时mid可能为最小值，取high=mid;
+                high = mid; 
+            } else if(num[mid] > num[high]){
+                // 第二种情况：mid大于high,最小值在右边，但此时mid不可能为最小值，取low=mid+1;
+                low = mid + 1; 
+            }
+        } 
+        return num[high];
+        
+    }
+}
+```
+

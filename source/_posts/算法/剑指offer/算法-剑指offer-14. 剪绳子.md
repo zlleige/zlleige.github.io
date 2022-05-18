@@ -6,6 +6,8 @@ categories:
 tags:
 - 算法
 - 剑指offer
+- 贪心
+- 动态规划
 description: 剑指offer刷题
 ---
 
@@ -69,6 +71,25 @@ public:
         return res;
     }
 };
+
+class Solution {
+    public int cuttingRope(int n) {
+        if(n <=3) return n - 1;
+        // 讨论n%3的余数，找规律
+        int mod = n % 3;
+        int c = n / 3;
+        if(mod == 1) {
+            // 4 7 10   (1,3)->(2,2)
+            return (int)Math.pow(3, c-1) * 2 *2;
+        } else if(mod == 2) {
+            // 5 8
+            return (int)Math.pow(3, c) * 2;
+        } else {
+            // 6 9
+            return (int)Math.pow(3, c);
+        }
+    }
+}
 ```
 
 ### 动态规划
@@ -115,4 +136,41 @@ public:
 
 
 
+
+
+
+## 剪绳子 2
+
+```
+答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，
+2 <= n <= 1000
+```
+
+
+
+```java
+class Solution {
+    public int cuttingRope(int n) {
+        if (n <= 3) {
+            return n - 1;
+        }
+
+        //最大int 2147483647，为防止在某一次 mul乘3已经溢出，类型需要设为long
+        long mul = 1;
+
+        //3,3,3,3,3,4
+        //3,3,3,3,3,3
+        //3,3,3,3,3,2
+        //3,3,3,3,3,1  X 此种情况算在和前面 3+1 和为 4
+        while (n > 4) {
+            //每次乘积后取余防止大数
+            mul = mul * 3 % 1000000007;
+
+            n -= 3;
+        }
+        return (int) (mul * n % 1000000007);
+    }
+}
+
+```
 

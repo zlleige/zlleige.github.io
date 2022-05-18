@@ -82,3 +82,111 @@ public:
 
 
 
+
+
+### java 实现
+
+```java
+class Solution {
+    public boolean exist(char[][] board, String word) {
+        if(board.length==0 || board[0].length == 0 || word == null) {
+            return false;
+        }
+        int row = board.length;
+        int col = board[0].length;
+        boolean[][] vis = new boolean[row][col];
+        // 遍历矩阵
+        for(int i = 0; i < row; i ++) {
+            for(int j = 0; j < col; j ++) {
+                if(dfs(board, i, j, word, 0, vis)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+   
+
+    boolean dfs(char[][] board, int x, int y, String word, int u, boolean[][] vis) {
+        // 当前矩阵和数组字符不同 返回FALSE；当字符串匹配完成，返回true
+        if(word.charAt(u) != board[x][y]) {
+            return false;
+        }
+        if(u == word.length() - 1) {
+            return true;
+        }
+        
+        // 防止重复
+        vis[x][y] = true;
+        int dx[] = {-1, 0, 1, 0};
+        int dy[] = {0, -1, 0, 1};
+        // 遍历四个方向 左下右上
+        for(int i = 0; i < 4; i ++) {
+            int nx = dx[i] + x;
+            int ny = dy[i] + y;
+            if(nx >= 0 && nx < board.length && ny >= 0 && ny < board[0].length && !vis[nx][ny]) {
+                if(dfs(board, nx, ny, word, u+1, vis)) {
+                    return true;
+                }
+            }
+        }
+        vis[x][y] = false;
+        return false;
+    }
+}
+```
+
+
+
+无需状态数组：
+
+```java
+class Solution {
+    public boolean exist(char[][] board, String word) {
+        if(board.length==0 || board[0].length == 0 || word == null) {
+            return false;
+        }
+        int row = board.length;
+        int col = board[0].length;
+        // 遍历矩阵
+        for(int i = 0; i < row; i ++) {
+            for(int j = 0; j < col; j ++) {
+                if(dfs(board, i, j, word, 0)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+   
+
+    boolean dfs(char[][] board, int x, int y, String word, int u ){
+        // 当前矩阵和数组字符不同 返回FALSE；当字符串匹配完成，返回true
+        if(word.charAt(u) != board[x][y]) {
+            return false;
+        }
+        if(u == word.length() - 1) {
+            return true;
+        }
+        
+        // 防止重复
+        char t = board[x][y];
+        board[x][y] = '*';
+        int dx[] = {-1, 0, 1, 0};
+        int dy[] = {0, -1, 0, 1};
+        // 遍历四个方向 左下右上
+        for(int i = 0; i < 4; i ++) {
+            int nx = dx[i] + x;
+            int ny = dy[i] + y;
+            if(nx >= 0 && nx < board.length && ny >= 0 && ny < board[0].length) {
+                if(dfs(board, nx, ny, word, u+1)) {
+                    return true;
+                }
+            }
+        }
+        board[x][y] = t;
+        return false;
+    }
+}
+```
+
